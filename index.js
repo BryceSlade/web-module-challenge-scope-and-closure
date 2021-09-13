@@ -13,10 +13,14 @@
  * It returns the string `foofoo`
 */
 
+
+
 function processFirstItem(stringList, callback) {
   return callback(stringList[0])
 }
-console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
+// console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
+
+
 
 // ⭐️ Example Challenge END ⭐️
 
@@ -28,8 +32,9 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
-  
+    
   2. Which of the two uses a closure? How can you tell?
+    counter1 code uses a closure at function counter(). function counter() is reaching into the outer function to grab the defined value. 
   
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
@@ -42,8 +47,9 @@ function counterMaker() {
    return count++;
   }
 }
-
 const counter1 = counterMaker();
+
+
 
 // counter2 code
 let count = 0;
@@ -62,9 +68,15 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+
+
+function inning(){
+    return Math.floor(Math.random() * 3)
 }
+
+// console.log(inning())
+
+
 
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
@@ -81,9 +93,28 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+
+
+
+function finalScore(inning, number){
+  const totalScore = []
+  let homeScore = 0
+  let awayScore = 0
+  for (let i = 0; i < 9; i++){
+    const currentScore = inning(number)
+    homeScore = homeScore + currentScore
+    awayScore = awayScore + currentScore
+    totalScore.push(`Away ${awayScore} - Home: ${homeScore}`)
+  }
+  return totalScore
 }
+
+console.log(finalScore(inning, 9))
+console.log(finalScore(inning, 9))
+
+
+
+
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
